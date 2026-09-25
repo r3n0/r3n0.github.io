@@ -1,0 +1,120 @@
+/* Importamos la fuente Jacquard 12 para el título y Share Tech Mono para un look de código/terminal */
+@import url('https://fonts.googleapis.com/css2?family=Jacquard+12&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+:root {
+    --bg-color: #0b0c10;
+    --text-color: #c5c6c7;
+    --accent-neon: #66fcf1; /* Un cyan neón estilo cyberpunk */
+    --accent-dark: #45a29e;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Share Tech Mono', monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* Fondo de cuadrícula sutil estilo ciberespacio/retro */
+    background-image: 
+        radial-gradient(circle at 50% 0%, #1f2833 0%, transparent 60%),
+        linear-gradient(0deg, transparent 24%, rgba(102, 252, 241, 0.03) 25%, rgba(102, 252, 241, 0.03) 26%, transparent 27%, transparent 74%, rgba(102, 252, 241, 0.03) 75%, rgba(102, 252, 241, 0.03) 76%, transparent 77%, transparent),
+        linear-gradient(90deg, transparent 24%, rgba(102, 252, 241, 0.03) 25%, rgba(102, 252, 241, 0.03) 26%, transparent 27%, transparent 74%, rgba(102, 252, 241, 0.03) 75%, rgba(102, 252, 241, 0.03) 76%, transparent 77%, transparent);
+    background-size: 100% 100%, 40px 40px, 40px 40px;
+}
+
+/* Contenedor principal tipo Linktree */
+.main-content {
+    width: 100%;
+    max-width: 450px;
+    padding: 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.title h1 {
+    font-family: 'Jacquard 12', system-ui;
+    font-size: 4.5rem;
+    color: var(--accent-neon);
+    font-weight: normal;
+    letter-spacing: 2px;
+    /* Efecto de brillo de pantalla CRT */
+    text-shadow: 0 0 10px rgba(102, 252, 241, 0.6), 0 0 20px rgba(102, 252, 241, 0.3);
+    margin-bottom: 0.5rem;
+}
+
+.title p {
+    font-size: 1rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent-dark);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Estilos de los botones */
+.itemlist a {
+    display: block;
+    text-decoration: none;
+    color: var(--accent-neon);
+    background-color: transparent;
+    border: 2px solid var(--accent-neon);
+    padding: 1.2rem 1.5rem;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 0 10px rgba(102, 252, 241, 0.1), 0 0 10px rgba(102, 252, 241, 0.1);
+    z-index: 1;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px); /* Bordes recortados estilo Sci-Fi */
+}
+
+/* Elemento oculto para la interacción del hover */
+.itemlist a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: var(--accent-neon);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: -1;
+    transform: skewX(-20deg); /* Ángulo agresivo estilo videojuego */
+}
+
+/* Interacción Hover */
+.itemlist a:hover {
+    color: var(--bg-color);
+    font-weight: bold;
+    box-shadow: 0 0 20px var(--accent-neon), 0 0 40px rgba(102, 252, 241, 0.4);
+    transform: scale(1.02) translateY(-2px);
+}
+
+.itemlist a:hover::before {
+    left: 0;
+    transform: skewX(0);
+}
+
+/* Interacción Click/Active */
+.itemlist a:active {
+    transform: scale(0.98) translateY(2px);
+    box-shadow: 0 0 10px var(--accent-neon);
+}
